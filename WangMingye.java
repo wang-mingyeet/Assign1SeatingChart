@@ -1,16 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The KilgoreTrout class can be used as a model for your own class that represents you and your seating location in AP CSA
- * 
- * @author Mr. Kaehms
+ * @author Mingye Wang
  * @version 2.0 Aug 13, 2019
  */
-public class KilgoreTrout extends Student implements SpecialInterestOrHobby
+public class WangMingye extends Student implements SpecialInterestOrHobby
 {
-
+    public String img;
     /**
-     * Constructor for the KilgoreTrout class.
+     * Constructor for the WangMingye class.
      * Constructors are special methods with the same exact name as the class name.  
      * Constructors to not have return types.
      * Constructors can be overloaded. This means we can call a constructor with different sets of parameter
@@ -21,15 +19,16 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
      * @param int s (seat number within row seating arrangement)
      * 
      */
-    public KilgoreTrout(String f, String l, int r, int s) {
+    public WangMingye(String f, String l, int r, int s) {
         firstName=f;
         lastName=l;
         myRow=r;
         mySeat=s;
         portraitFile=f.toLowerCase()+l.toLowerCase()+".jpg";    // Make sure to name your image files firstlast.jpg, all lowercase!!!
-        standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
+        //standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
         soundFile=f.toLowerCase()+l.toLowerCase()+".wav";  // Make sure to name your sound files firstlast.wav, all lowercase!!!
-        setImage(portraitFile);
+        
+        scale();
         sitting=true;
     }
     /**
@@ -37,44 +36,47 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
      * Pay attention to how the row and seat variables set the location of the image.  1,1 is the first cell in the upper left
      * of the classroom.
      */
-    public KilgoreTrout() {
-        firstName="Kilgore";
-        lastName="Trout";
-        myRow=1;
-        mySeat=1;
-       // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
-       portraitFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
-       standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
+    public WangMingye() {
+        firstName="Mingye";
+        lastName="Wang";
+        myRow=4;
+        mySeat=5;
+        // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
+        portraitFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
+        //standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
         soundFile=firstName.toLowerCase()+ lastName.toLowerCase()+".wav";
-        setImage(portraitFile);
+        
+        scale();
         sitting=true;
     }
      /**
-     * Act - do whatever the KilgoreTrout actor needs to do. This method is called whenever
+     * Act - do whatever the WangMingye actor needs to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */   
     public void act() 
     {
         // Add your action code here.
+        scale();
         if(Greenfoot.mouseClicked(this)){
             if (sitting){
             sitting=false;
-            setImage(standingFile);
+            //setImage(standingFile);
             System.out.println(""); // Print a blank line to create space between any student output.
-            getName();
-            sayName(soundFile);
+            //getName();
+            //sayName(soundFile);
             
-                myHobby("I like to time travel!");
+            myHobby("I like to practice");
             // Create a "special method for your class and put the call here.  You can twirl your image, resize it, move it around, change transparancy, or a 
             // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
             // Call the sitDown() method to move back  to your seat
             
-                circleClass();  // Kilgore Trount's special method... Please write one of your own. You can use this, but please modify it and be creative.
+            circleClass();  // Kilgore Trount's special method... Please write one of your own. You can use this, but please modify it and be creative.
             }
             else {
                 answerQuestion();
                 sitDown();
-            }      
+                scale();
+            }
         }
     } 
     /**
@@ -102,9 +104,10 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
             Greenfoot.delay(10);
             sitDown();
         }
+        scale();
     }
     /**
-     * This is a local method specific to the KilgoreTrout class used to animate the character once the image is clicked on.
+     * This is a local method specific to the WangMingye class used to animate the character once the image is clicked on.
      * You can write your own methods to perform your own animation for your character/avatar.
      */
     public void circleClass(){
@@ -135,5 +138,14 @@ public class KilgoreTrout extends Student implements SpecialInterestOrHobby
     }
     public void myHobby(String s) {
          System.out.println(s);
+    }
+    /**
+    * A local method that constantly updates the size of the image so that it is scaled appropriately
+    */
+    public void scale()
+    {
+        GreenfootImage img = new GreenfootImage(portraitFile);
+        img.scale(100, 125);
+        setImage(img);
     }
 }
