@@ -39,9 +39,26 @@ public class Classroom extends World
         addObject(kilgoretrout, 1, 1);
         kilgoretrout.sitDown();
          
-        WangMingye myw = new WangMingye("Mingye", "Wang", 4, 5);
-        addObject(myw, 4, 5);
+        WangMingye myw = new WangMingye("Mingye", "Wang", 5, 4);
+        addObject(myw, 5, 4);
 
 
     }  
+    
+    public void act()
+    {
+        if (WangMingye.staff_load_in)
+        {
+            staff staff = new staff();
+            addObject(staff, 8, 3);
+            WangMingye.set_staff_status(false);
+        }
+        if (WangMingye.staff_load_out)
+        {
+            List remove = getObjects( staff.class );
+            for (Object objects : remove) {
+                removeObject( ( staff ) objects ); }
+            WangMingye.set_staff_status(false);
+        }
+    }
 }

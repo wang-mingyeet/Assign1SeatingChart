@@ -7,6 +7,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class WangMingye extends Student implements SpecialInterestOrHobby
 {
     public String img;
+    public static boolean staff_load_in;
+    public static boolean staff_load_out; 
     /**
      * Constructor for the WangMingye class.
      * Constructors are special methods with the same exact name as the class name.  
@@ -39,8 +41,8 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
     public WangMingye() {
         firstName="Mingye";
         lastName="Wang";
-        myRow=4;
-        mySeat=5;
+        myRow=5;
+        mySeat=4;
         // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
         portraitFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
         //standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
@@ -66,6 +68,7 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
             //sayName(soundFile);
             
             myHobby("I like to practice");
+            staff_load_in = true;
             // Create a "special method for your class and put the call here.  You can twirl your image, resize it, move it around, change transparancy, or a 
             // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
             // Call the sitDown() method to move back  to your seat
@@ -76,6 +79,7 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
                 answerQuestion();
                 sitDown();
                 scale();
+                staff_load_out = true;
             }
         }
     } 
@@ -147,5 +151,10 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         GreenfootImage img = new GreenfootImage(portraitFile);
         img.scale(100, 125);
         setImage(img);
+    }
+    public static void set_staff_status(boolean c)
+    {
+        staff_load_in = c;
+        staff_load_out = c;
     }
 }
