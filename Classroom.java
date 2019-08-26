@@ -54,6 +54,7 @@ public class Classroom extends World
             addObject(staff, 8, 3);
             setPaintOrder(WangMingye.class,staff.class);
             WangMingye.set_staff_status(false);
+            WangMingye.checkpoint(true);
         }
         if (WangMingye.staff_load_out)
         {
@@ -61,6 +62,7 @@ public class Classroom extends World
             for (Object objects : remove) {
                 removeObject( ( staff ) objects ); }
             WangMingye.set_staff_status(false);
+            WangMingye.checkpoint(true);
         }
     }
 }

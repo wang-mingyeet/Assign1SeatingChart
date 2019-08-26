@@ -10,6 +10,7 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
     public static boolean staff_load_in;
     public static boolean staff_load_out; 
     int[][] loc = new int[10][6];
+    private static boolean pass = false;
     /**
      * Constructor for the WangMingye class.
      * Constructors are special methods with the same exact name as the class name.  
@@ -62,15 +63,13 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         scale(portraitFile, 100, 125);
         if(Greenfoot.mouseClicked(this)){
             if (sitting){
-            while(staff_load_in)
-            {
              sitting = false;
              scale(standingFile, 125, 150);
              staff_load_in = true;
-            
-            
+             
+             
              System.out.println(""); // Print a blank line to create space between any student output.
-             //getName();
+             getName();
              //sayName(soundFile);
             
              myHobby("I like to practice");
@@ -78,9 +77,9 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
              // Create a "special method for your class and put the call here.  You can twirl your image, resize it, move it around, change transparancy, or a 
              // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
              // Call the sitDown() method to move back  to your seat
-            }   
-            circleClass();    
-            }
+             
+             circleClass();
+             }
             else {
                 answerQuestion();
                 sitDown();
@@ -179,5 +178,9 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
     {
         staff_load_in = c;
         staff_load_out = c;
+    }
+    public static void checkpoint(boolean p)
+    {
+        pass = p;
     }
 }
