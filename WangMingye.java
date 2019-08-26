@@ -9,6 +9,7 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
     public String img;
     public static boolean staff_load_in;
     public static boolean staff_load_out; 
+    int[][] loc = new int[10][6];
     /**
      * Constructor for the WangMingye class.
      * Constructors are special methods with the same exact name as the class name.  
@@ -27,10 +28,10 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         myRow=r;
         mySeat=s;
         portraitFile=f.toLowerCase()+l.toLowerCase()+".jpg";    // Make sure to name your image files firstlast.jpg, all lowercase!!!
-        //standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
+        standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
         soundFile=f.toLowerCase()+l.toLowerCase()+".wav";  // Make sure to name your sound files firstlast.wav, all lowercase!!!
         
-        scale();
+        scale(portraitFile, 100, 125);
         sitting=true;
     }
     /**
@@ -45,10 +46,10 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         mySeat=4;
         // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
         portraitFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
-        //standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
+        standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
         soundFile=firstName.toLowerCase()+ lastName.toLowerCase()+".wav";
         
-        scale();
+        scale(portraitFile, 100, 125);
         sitting=true;
     }
      /**
@@ -58,27 +59,32 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
     public void act() 
     {
         // Add your action code here.
-        scale();
+        scale(portraitFile, 100, 125);
         if(Greenfoot.mouseClicked(this)){
             if (sitting){
-            sitting=false;
-            //setImage(standingFile);
-            System.out.println(""); // Print a blank line to create space between any student output.
-            //getName();
-            //sayName(soundFile);
+            while(staff_load_in)
+            {
+             sitting = false;
+             scale(standingFile, 125, 150);
+             staff_load_in = true;
             
-            myHobby("I like to practice");
-            staff_load_in = true;
-            // Create a "special method for your class and put the call here.  You can twirl your image, resize it, move it around, change transparancy, or a 
-            // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
-            // Call the sitDown() method to move back  to your seat
             
-            circleClass();  // Kilgore Trount's special method... Please write one of your own. You can use this, but please modify it and be creative.
+             System.out.println(""); // Print a blank line to create space between any student output.
+             //getName();
+             //sayName(soundFile);
+            
+             myHobby("I like to practice");
+            
+             // Create a "special method for your class and put the call here.  You can twirl your image, resize it, move it around, change transparancy, or a 
+             // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
+             // Call the sitDown() method to move back  to your seat
+            }   
+            circleClass();    
             }
             else {
                 answerQuestion();
                 sitDown();
-                scale();
+                scale(portraitFile, 100, 125);
                 staff_load_out = true;
             }
         }
@@ -108,36 +114,53 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
             Greenfoot.delay(10);
             sitDown();
         }
-        scale();
+        scale(portraitFile, 100, 125);
     }
     /**
      * This is a local method specific to the WangMingye class used to animate the character once the image is clicked on.
      * You can write your own methods to perform your own animation for your character/avatar.
      */
     public void circleClass(){
-        setLocation(0,0);
+        setLocation(2,3);
         Greenfoot.delay(10);
-        // move right
-        for (int i=1;i<=9;i++){
-            setLocation(i,0);
-            Greenfoot.delay(10);
-        }
-        // move back
-        for (int i=1;i<=5;i++){
-            setLocation(9,i);
-            Greenfoot.delay(10);
-        }      
-         // move left
-        for (int i=9;i>=0;i--){
-            setLocation(i,5);
-            Greenfoot.delay(10);
-        }      
-              // move Forward
-        for (int i=5;i>=0;i--){
-            setLocation(0,i);
-            Greenfoot.delay(10);
-        }   
-        Greenfoot.delay(20);
+        setLocation(3,3);
+        Greenfoot.delay(10);
+        setLocation(4,3);
+        Greenfoot.delay(10);
+        setLocation(5,2);
+        Greenfoot.delay(10);
+        setLocation(6,3);
+        Greenfoot.delay(10);
+        setLocation(7,4);
+        Greenfoot.delay(10);
+        setLocation(2,1);
+        Greenfoot.delay(10);
+        setLocation(3,5);
+        Greenfoot.delay(10);
+        setLocation(4,5);
+        Greenfoot.delay(10);
+        setLocation(5,3);
+        Greenfoot.delay(10);
+        setLocation(6,4);
+        Greenfoot.delay(10);
+        setLocation(7,5);
+        Greenfoot.delay(10);
+        setLocation(2,3);
+        Greenfoot.delay(10);
+        setLocation(3,3);
+        Greenfoot.delay(10);
+        setLocation(4,3);
+        Greenfoot.delay(10);
+        setLocation(5,2);
+        Greenfoot.delay(10);
+        setLocation(6,3);
+        Greenfoot.delay(10);
+        setLocation(7,4);
+        Greenfoot.delay(10);
+        setLocation(3,1);
+        Greenfoot.delay(10);
+        setLocation(6,5);
+        Greenfoot.delay(10);
         returnToSeat();
     }
     public void myHobby(String s) {
@@ -146,10 +169,10 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
     /**
     * A local method that constantly updates the size of the image so that it is scaled appropriately
     */
-    public void scale()
+    public void scale(String input, int w, int h)
     {
-        GreenfootImage img = new GreenfootImage(portraitFile);
-        img.scale(100, 125);
+        GreenfootImage img = new GreenfootImage(input);
+        img.scale(w, h);
         setImage(img);
     }
     public static void set_staff_status(boolean c)

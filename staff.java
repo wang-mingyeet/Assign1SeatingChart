@@ -16,7 +16,7 @@ public class staff extends Actor
     public void act() 
     {
         // Add your action code here.
-        setLocation(8,3);
+        setLocation(6,3);
     }    
     public staff()
     {
@@ -25,7 +25,7 @@ public class staff extends Actor
     public void setsize()
     {
         GreenfootImage img = new GreenfootImage("g-clef.jpg");
-        img.scale(img.getWidth() * 2, img.getHeight() * 2);
+        img.scale(img.getWidth() * 3, img.getHeight() * 3);
         setImage(img);
     }
 }

@@ -41,6 +41,7 @@ public class Classroom extends World
          
         WangMingye myw = new WangMingye("Mingye", "Wang", 5, 4);
         addObject(myw, 5, 4);
+        setPaintOrder(WangMingye.class,staff.class);
 
 
     }  
@@ -51,6 +52,7 @@ public class Classroom extends World
         {
             staff staff = new staff();
             addObject(staff, 8, 3);
+            setPaintOrder(WangMingye.class,staff.class);
             WangMingye.set_staff_status(false);
         }
         if (WangMingye.staff_load_out)
