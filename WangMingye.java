@@ -1,6 +1,7 @@
 import java.util.*;
 import greenfoot.*;
 import java.util.ArrayList;
+import java.lang.Math;
    // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -80,7 +81,10 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
              // Call the sitDown() method to move back  to your seat
              
              circleClass();
+             animation();
              load_out_staff();
+             
+             
              }
             else {
                 answerQuestion();
@@ -161,7 +165,11 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         Greenfoot.delay(10);
         setLocation(6,5);
         Greenfoot.delay(10);
-        returnToSeat();
+    }
+    public void animation()
+    {
+        setLocation((int)(10 * Math.random()), (int)(6 * Math.random()));
+        scale(standingFile, 400, 500);
     }
     public void myHobby(String s) {
          System.out.println(s);
