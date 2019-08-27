@@ -12,6 +12,8 @@ import java.util.ArrayList;
 public class Classroom extends World
 {
     private ArrayList<Object> listo = new ArrayList<Object>();
+    
+    public static boolean staff_loaded = false;
     /**
      * Constructor for objects of class Classroom.
      * 
@@ -46,7 +48,7 @@ public class Classroom extends World
 
     }  
     
-    public void act()
+    /*public void act()
     {
         if (WangMingye.staff_load_in)
         {
@@ -64,5 +66,5 @@ public class Classroom extends World
             WangMingye.set_staff_status(false);
             WangMingye.checkpoint(true);
         }
-    }
+    }*/
 }

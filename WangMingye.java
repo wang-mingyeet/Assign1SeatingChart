@@ -1,4 +1,7 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
+import greenfoot.*;
+import java.util.ArrayList;
+   // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * @author Mingye Wang
@@ -7,10 +10,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class WangMingye extends Student implements SpecialInterestOrHobby
 {
     public String img;
-    public static boolean staff_load_in;
-    public static boolean staff_load_out; 
     int[][] loc = new int[10][6];
-    private static boolean pass = false;
     /**
      * Constructor for the WangMingye class.
      * Constructors are special methods with the same exact name as the class name.  
@@ -65,11 +65,12 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
             if (sitting){
              sitting = false;
              scale(standingFile, 125, 150);
-             staff_load_in = true;
              
+             load_staff();
              
              System.out.println(""); // Print a blank line to create space between any student output.
              getName();
+ 
              //sayName(soundFile);
             
              myHobby("I like to practice");
@@ -79,12 +80,12 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
              // Call the sitDown() method to move back  to your seat
              
              circleClass();
+             load_out_staff();
              }
             else {
                 answerQuestion();
                 sitDown();
                 scale(portraitFile, 100, 125);
-                staff_load_out = true;
             }
         }
     } 
@@ -174,13 +175,18 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         img.scale(w, h);
         setImage(img);
     }
-    public static void set_staff_status(boolean c)
+    public void load_staff()
     {
-        staff_load_in = c;
-        staff_load_out = c;
+        Classroom classroom = (Classroom) getWorld();
+        staff staff = new staff();
+        classroom.addObject(staff, 6, 3);
+        classroom.setPaintOrder(WangMingye.class,staff.class);
     }
-    public static void checkpoint(boolean p)
+    public void load_out_staff()
     {
-        pass = p;
+        Classroom classroom = (Classroom) getWorld();
+        List remove = classroom.getObjects( staff.class );
+        for (Object objects : remove) {
+                classroom.removeObject( ( staff ) objects ); }
     }
 }
