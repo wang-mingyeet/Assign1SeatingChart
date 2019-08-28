@@ -11,7 +11,7 @@ import java.lang.Math;
 public class WangMingye extends Student implements SpecialInterestOrHobby
 {
     public String img;
-    int[][] loc = new int[10][6];
+    private String confused_lvl_1 = "I don't understand... I guess you can ask me about ";
     /**
      * Constructor for the WangMingye class.
      * Constructors are special methods with the same exact name as the class name.  
@@ -44,8 +44,8 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
     public WangMingye() {
         firstName="Mingye";
         lastName="Wang";
-        myRow=5;
-        mySeat=4;
+        myRow=4;
+        mySeat=5;
         // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
         portraitFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
         standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
@@ -170,6 +170,12 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
     {
         setLocation((int)(10 * Math.random()), (int)(6 * Math.random()));
         scale(standingFile, 400, 500);
+        for (int i = 0; i <= 1800; i += 10)
+        {
+            setRotation(30*i);
+            Greenfoot.delay(1);
+        }
+        returnToSeat();
     }
     public void myHobby(String s) {
          System.out.println(s);
@@ -196,5 +202,10 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         List remove = classroom.getObjects( staff.class );
         for (Object objects : remove) {
                 classroom.removeObject( ( staff ) objects ); }
+    }
+    public void set_questions()
+    {
+        ;
+        
     }
 }
