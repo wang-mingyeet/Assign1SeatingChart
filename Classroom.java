@@ -43,7 +43,6 @@ public class Classroom extends World
          
         WangMingye myw = new WangMingye("Mingye", "Wang", 5, 4);
         addObject(myw, 5, 4);
-        setPaintOrder(WangMingye.class,staff.class);
 
 
     }  
