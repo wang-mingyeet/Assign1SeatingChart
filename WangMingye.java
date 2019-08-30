@@ -11,7 +11,7 @@ import java.lang.Math;
 public class WangMingye extends Student implements SpecialInterestOrHobby
 {
     public String img;
-    private String confused_lvl_1 = "I don't understand... I guess you can ask me about ";
+    int[][] location = new int[9][2];
     /**
      * Constructor for the WangMingye class.
      * Constructors are special methods with the same exact name as the class name.  
@@ -35,6 +35,7 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         
         scale(portraitFile, 100, 125);
         sitting=true;
+        randLocation();
     }
     /**
      * Default constructor, if you don't pass in a name and seating location
@@ -44,8 +45,8 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
     public WangMingye() {
         firstName="Mingye";
         lastName="Wang";
-        myRow=4;
-        mySeat=5;
+        myRow=5;
+        mySeat=4;
         // imgFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
         portraitFile=firstName.toLowerCase()+ lastName.toLowerCase()+".jpg";
         standingFile=firstName.toLowerCase()+ lastName.toLowerCase()+"-standing.jpg";
@@ -53,6 +54,7 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         
         scale(portraitFile, 100, 125);
         sitting=true;
+        randLocation();
     }
      /**
      * Act - do whatever the WangMingye actor needs to do. This method is called whenever
@@ -175,6 +177,13 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
             setRotation(30*i);
             Greenfoot.delay(1);
         }
+        scale(standingFile, 125, 150);
+        for (int i = 0; i < location.length; i++)
+        {
+            int j = 0;
+            setLocation(location[i][j], location[i][j+1]);
+            Greenfoot.delay(1);
+        }
         returnToSeat();
     }
     public void myHobby(String s) {
@@ -203,9 +212,28 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         for (Object objects : remove) {
                 classroom.removeObject( ( staff ) objects ); }
     }
-    public void set_questions()
+    public void randLocation()
     {
-        ;
-        
+        for (int i = 0; i < location.length; i++)
+        {
+            for (int j = 0; j < location[i].length; j++)
+            {
+                location[i][j] = (int)(Math.random() *  255);
+            }
+        }
+        for (int i = 0; i < location.length; i++)
+        {
+            int j = 0;
+            location[i][j] = location[i][j] % 11;
+            location[i][j + 1] = location[i][j] % 7;
+        }
+        for (int i = 0; i < location.length; i++)
+        {
+            for (int j = 0; j < location[i].length; j++)
+            {
+                System.out.print(location[i][j] + "   ");
+            }
+            System.out.print("\n");
+        }
     }
 }

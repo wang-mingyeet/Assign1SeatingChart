@@ -41,7 +41,7 @@ public class Classroom extends World
         addObject(kilgoretrout, 1, 1);
         kilgoretrout.sitDown();
          
-        WangMingye myw = new WangMingye("Mingye", "Wang", 5, 4);
+        WangMingye myw = new WangMingye("Mingye", "Wang", 4, 5);
         addObject(myw, 5, 4);
 
 
