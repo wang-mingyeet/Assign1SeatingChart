@@ -183,6 +183,9 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
             int j = 0;
             setLocation(location[i][j], location[i][j+1]);
             Greenfoot.delay(1);
+            Greenfoot.playSound("shine.wav");
+            shine();
+            Greenfoot.delay(1);
         }
         returnToSeat();
     }
@@ -235,5 +238,17 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
             }
             System.out.print("\n");
         }
+    }
+    public void shine()
+    {
+        Classroom classroom = (Classroom) getWorld();
+        shine shine = new shine();
+        classroom.addObject(shine, getX(), getY());
+        classroom.setPaintOrder(shine.class,WangMingye.class);
+        Greenfoot.delay(3);
+        List remove = classroom.getObjects( shine.class );
+        for (Object objects : remove) {
+                classroom.removeObject( ( shine ) objects ); }
+        Greenfoot.delay(5);
     }
 }
