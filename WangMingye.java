@@ -1,4 +1,8 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
+import greenfoot.*;
+import java.util.ArrayList;
+import java.lang.Math;
+   // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * @author Mingye Wang
@@ -7,9 +11,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class WangMingye extends Student implements SpecialInterestOrHobby
 {
     public String img;
-    public static boolean staff_load_in;
-    public static boolean staff_load_out; 
-    int[][] loc = new int[10][6];
+    int[][] location = new int[9][2];
     /**
      * Constructor for the WangMingye class.
      * Constructors are special methods with the same exact name as the class name.  
@@ -33,6 +35,7 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         
         scale(portraitFile, 100, 125);
         sitting=true;
+        randLocation();
     }
     /**
      * Default constructor, if you don't pass in a name and seating location
@@ -51,6 +54,7 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         
         scale(portraitFile, 100, 125);
         sitting=true;
+        randLocation();
     }
      /**
      * Act - do whatever the WangMingye actor needs to do. This method is called whenever
@@ -62,15 +66,14 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         scale(portraitFile, 100, 125);
         if(Greenfoot.mouseClicked(this)){
             if (sitting){
-            while(staff_load_in)
-            {
              sitting = false;
              scale(standingFile, 125, 150);
-             staff_load_in = true;
-            
-            
+             
+             load_staff();
+             
              System.out.println(""); // Print a blank line to create space between any student output.
-             //getName();
+             getName();
+ 
              //sayName(soundFile);
             
              myHobby("I like to practice");
@@ -78,14 +81,17 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
              // Create a "special method for your class and put the call here.  You can twirl your image, resize it, move it around, change transparancy, or a 
              // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
              // Call the sitDown() method to move back  to your seat
-            }   
-            circleClass();    
-            }
+             
+             circleClass();
+             animation();
+             load_out_staff();
+             
+             
+             }
             else {
                 answerQuestion();
                 sitDown();
                 scale(portraitFile, 100, 125);
-                staff_load_out = true;
             }
         }
     } 
@@ -161,6 +167,23 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         Greenfoot.delay(10);
         setLocation(6,5);
         Greenfoot.delay(10);
+    }
+    public void animation()
+    {
+        setLocation((int)(10 * Math.random()), (int)(6 * Math.random()));
+        scale(standingFile, 400, 500);
+        for (int i = 0; i <= 1800; i += 10)
+        {
+            setRotation(30*i);
+            Greenfoot.delay(1);
+        }
+        scale(standingFile, 125, 150);
+        for (int i = 0; i < location.length; i++)
+        {
+            int j = 0;
+            setLocation(location[i][j], location[i][j+1]);
+            Greenfoot.delay(1);
+        }
         returnToSeat();
     }
     public void myHobby(String s) {
@@ -175,9 +198,42 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
         img.scale(w, h);
         setImage(img);
     }
-    public static void set_staff_status(boolean c)
+    public void load_staff()
     {
-        staff_load_in = c;
-        staff_load_out = c;
+        Classroom classroom = (Classroom) getWorld();
+        staff staff = new staff();
+        classroom.addObject(staff, 6, 3);
+        classroom.setPaintOrder(WangMingye.class,staff.class);
+    }
+    public void load_out_staff()
+    {
+        Classroom classroom = (Classroom) getWorld();
+        List remove = classroom.getObjects( staff.class );
+        for (Object objects : remove) {
+                classroom.removeObject( ( staff ) objects ); }
+    }
+    public void randLocation()
+    {
+        for (int i = 0; i < location.length; i++)
+        {
+            for (int j = 0; j < location[i].length; j++)
+            {
+                location[i][j] = (int)(Math.random() *  255);
+            }
+        }
+        for (int i = 0; i < location.length; i++)
+        {
+            int j = 0;
+            location[i][j] = location[i][j] % 11;
+            location[i][j + 1] = location[i][j] % 7;
+        }
+        for (int i = 0; i < location.length; i++)
+        {
+            for (int j = 0; j < location[i].length; j++)
+            {
+                System.out.print(location[i][j] + "   ");
+            }
+            System.out.print("\n");
+        }
     }
 }

@@ -12,6 +12,8 @@ import java.util.ArrayList;
 public class Classroom extends World
 {
     private ArrayList<Object> listo = new ArrayList<Object>();
+    
+    public static boolean staff_loaded = false;
     /**
      * Constructor for objects of class Classroom.
      * 
@@ -39,28 +41,9 @@ public class Classroom extends World
         addObject(kilgoretrout, 1, 1);
         kilgoretrout.sitDown();
          
-        WangMingye myw = new WangMingye("Mingye", "Wang", 5, 4);
+        WangMingye myw = new WangMingye("Mingye", "Wang", 4, 5);
         addObject(myw, 5, 4);
-        setPaintOrder(WangMingye.class,staff.class);
 
 
     }  
-    
-    public void act()
-    {
-        if (WangMingye.staff_load_in)
-        {
-            staff staff = new staff();
-            addObject(staff, 8, 3);
-            setPaintOrder(WangMingye.class,staff.class);
-            WangMingye.set_staff_status(false);
-        }
-        if (WangMingye.staff_load_out)
-        {
-            List remove = getObjects( staff.class );
-            for (Object objects : remove) {
-                removeObject( ( staff ) objects ); }
-            WangMingye.set_staff_status(false);
-        }
-    }
 }
