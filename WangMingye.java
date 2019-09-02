@@ -73,8 +73,6 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
              
              System.out.println(""); // Print a blank line to create space between any student output.
              getName();
- 
-             //sayName(soundFile);
             
              myHobby("I like to practice");
             
@@ -82,6 +80,7 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
              // combination of all of those types of actions, or more. Make sure to save the original image if you manipulate it, so that you can put it back.
              // Call the sitDown() method to move back  to your seat
              
+             Greenfoot.playSound("paganini.wav");
              circleClass();
              animation();
              load_out_staff();
@@ -127,52 +126,57 @@ public class WangMingye extends Student implements SpecialInterestOrHobby
      * You can write your own methods to perform your own animation for your character/avatar.
      */
     public void circleClass(){
-        setLocation(2,3);
-        Greenfoot.delay(10);
-        setLocation(3,3);
-        Greenfoot.delay(10);
-        setLocation(4,3);
-        Greenfoot.delay(10);
-        setLocation(5,2);
-        Greenfoot.delay(10);
-        setLocation(6,3);
-        Greenfoot.delay(10);
-        setLocation(7,4);
-        Greenfoot.delay(10);
-        setLocation(2,1);
-        Greenfoot.delay(10);
-        setLocation(3,5);
-        Greenfoot.delay(10);
-        setLocation(4,5);
-        Greenfoot.delay(10);
-        setLocation(5,3);
-        Greenfoot.delay(10);
-        setLocation(6,4);
-        Greenfoot.delay(10);
-        setLocation(7,5);
-        Greenfoot.delay(10);
-        setLocation(2,3);
-        Greenfoot.delay(10);
-        setLocation(3,3);
-        Greenfoot.delay(10);
-        setLocation(4,3);
-        Greenfoot.delay(10);
-        setLocation(5,2);
-        Greenfoot.delay(10);
-        setLocation(6,3);
-        Greenfoot.delay(10);
-        setLocation(7,4);
-        Greenfoot.delay(10);
-        setLocation(3,1);
-        Greenfoot.delay(10);
-        setLocation(6,5);
-        Greenfoot.delay(10);
+        Greenfoot.delay(80);
+        for (int i = 0; i < 2; i++)
+        {
+            setLocation(2,3);
+            Greenfoot.delay(23);
+            setLocation(3,3);
+            Greenfoot.delay(7);
+            setLocation(4,3);
+            Greenfoot.delay(8);
+            setLocation(5,2);
+            Greenfoot.delay(8);
+            setLocation(6,3);
+            Greenfoot.delay(7);
+            setLocation(7,4);
+            Greenfoot.delay(7);
+            setLocation(2,1);
+            Greenfoot.delay(23);
+            setLocation(3,5);
+            Greenfoot.delay(7);
+            setLocation(4,5);
+            Greenfoot.delay(8);
+            setLocation(5,3);
+            Greenfoot.delay(7);
+            setLocation(6,4);
+            Greenfoot.delay(8);
+            setLocation(7,5);
+            Greenfoot.delay(7);
+            setLocation(2,3);
+            Greenfoot.delay(22);
+            setLocation(3,3);
+            Greenfoot.delay(8);
+            setLocation(4,3);
+            Greenfoot.delay(8);
+            setLocation(5,2);
+            Greenfoot.delay(7);
+            setLocation(6,3);
+            Greenfoot.delay(8);
+            setLocation(7,4);
+            Greenfoot.delay(7);
+            setLocation(3,1);
+            Greenfoot.delay(32);
+            setLocation(6,5);
+            Greenfoot.delay(32);
+    }
     }
     public void animation()
     {
         setLocation((int)(10 * Math.random()), (int)(6 * Math.random()));
         scale(standingFile, 400, 500);
-        for (int i = 0; i <= 1800; i += 10)
+        sayName(soundFile);
+        for (int i = 0; i <= 900; i += 10)
         {
             setRotation(30*i);
             Greenfoot.delay(1);
